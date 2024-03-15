@@ -1,6 +1,7 @@
 package com.api.Api.Rest.repository;
 
 import com.api.Api.Rest.model.Produto;
+import com.api.Api.Rest.model.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class ProdutoRepository {
         Optional<Produto> produtoEncontrado = obterPorId(produto.getId());
 
         if (produtoEncontrado.isEmpty()){
-            throw  new InputMismatchException("Produto não encontrado");
+            throw  new ResourceNotFoundException("Produto não encontrado");
         }
 
         deletar(produto.getId());
